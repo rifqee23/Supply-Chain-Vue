@@ -1,10 +1,10 @@
 <script setup>
-import Nav from "./components/Nav.vue";
+import Nav from "./components/Layouts/Nav.vue";
 </script>
 
 <template>
   <Nav />
-  <div>
+  <div class="mt-2">
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
