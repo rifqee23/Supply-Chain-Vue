@@ -2,9 +2,20 @@
 import { ref } from "vue";
 import Button from "../Elements/Button.vue";
 const isOpen = ref(false);
+const isOpenMenu = ref(false);
 
 const toogleMenu = () => {
   isOpen.value = !isOpen.value;
+};
+
+const subMenu = () => {
+  isOpenMenu.value = !isOpenMenu.value;
+};
+
+const emit = defineEmits(["navigate"]);
+
+const navigateTo = (page) => {
+  emit("navigate", page);
 };
 </script>
 
@@ -34,14 +45,36 @@ const toogleMenu = () => {
           <ul class="flex flex-col justify-center mt-20 gap-y-2 text-gray">
             <li
               class="text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
+              @click="navigateTo('home')"
             >
               Home
             </li>
             <li
               class="text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
+              @click="subMenu"
             >
               Master Data
             </li>
+            <ul :class="{ hidden: !isOpenMenu }">
+              <li
+                class="text-sm text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
+                @click="navigateTo('item')"
+              >
+                Data Barang
+              </li>
+              <li
+                class="text-sm text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
+                @click="navigateTo('supplier')"
+              >
+                Data Supplier
+              </li>
+              <li
+                class="text-sm text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
+                @click="navigateTo('stackholder')"
+              >
+                Data Stackholder
+              </li>
+            </ul>
             <li
               class="text-center px-2 hover:bg-orange-300 hover:cursor-pointer"
             >
